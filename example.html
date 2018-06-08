@@ -6,23 +6,26 @@
      .pokemon div {
        background-color: green;
        height: 30px;
-       color: white;
+       color: black;
      }
     </style>
     <script type="application/javascript">
-      var data = [129, 190, 250, 50, 100, 20];
+      var pikachu = [["attack", 129],
+                     ["defense", 190],
+                     ["regeneration", 250],
+                     ["size", 50],
+                     ["block", 29],
+                     ["weaponStrength", 321]];
 
       window.onload = () => {
         let elements = d3.select(".pokemon")
                          .selectAll("div")
-                         .data(data);
-
-        elements.style("width", (d) => d + "px");
+                         .data(pikachu);
 
         elements.enter()
                 .append("div")
-                .style("width", (d) => d + "px")
-                .text((d) => d);
+                .style("width", (d) => d[1] + "px")
+                .text((d) => d[0] + "_" + d[1]);
       }
     </script>
   </head>
@@ -31,10 +34,6 @@
 
     <h2>Pikachu</h2>
     <section class="pokemon">
-      <div>attack</div>
-      <div>defense</div>
-      <div>regeneration</div>
-      <div>size</div>
     </section>
   </body>
 </html>
